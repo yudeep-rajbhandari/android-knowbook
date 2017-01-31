@@ -1,7 +1,10 @@
 package com.example.user.volleyjson;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -38,11 +41,18 @@ public class showsubject extends AppCompatActivity {
         String get_semester=getIntent().getStringExtra("get_semester");
         Toast.makeText(showsubject.this,get_faculty,Toast.LENGTH_LONG).show();
         System.out.println("<<<<<<<<<<<<<<<<<<<");
-        String url = "http://192.168.100.3:8080/subject/getsubject/?Faculty="+get_faculty+"&Semester="+get_semester;
+        String url = "http://knowbook.herokuapp.com/subject/getsubject/?Faculty="+get_faculty+"&Semester="+get_semester;
        subjectAdapter=new SubjectAdapter(this,R.layout.textlayout);
 
 
        listView.setAdapter(subjectAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+               // showsubject item=(showsubject)listView.getItemAtPosition()
+                Toast.makeText(showsubject.this,"to next intent",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
