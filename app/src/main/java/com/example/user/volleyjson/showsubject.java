@@ -19,44 +19,60 @@ import java.util.ArrayList;
 
 public class showsubject extends AppCompatActivity {
 
-ListView listView;
-    ArrayList mArrayList;
-    ArrayAdapter adapter;
+    ListView listView;
+    //ArrayList mArrayList;
+    //ArrayAdapter adapter;
+   SubjectAdapter subjectAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showsubject);
-        mArrayList = new ArrayList<String>();
-        adapter = new ArrayAdapter<String>(this,
-               R.layout.textlayout, R.id.credit, mArrayList);
+//        mArrayList = new ArrayList<String>();
+//        adapter = new ArrayAdapter<String>(this,
+//               R.layout.textlayout, R.id.credit, mArrayList);
+            listView = (ListView) findViewById(R.id.list_view);
 
-        listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
 
         String get_faculty=getIntent().getStringExtra("get_faculty");
         String get_semester=getIntent().getStringExtra("get_semester");
         Toast.makeText(showsubject.this,get_faculty,Toast.LENGTH_LONG).show();
-        String url = "http://192.168.100.4:8080/subject/getsubject/?Faculty="+get_faculty+"&Semester="+get_semester;
+        System.out.println("<<<<<<<<<<<<<<<<<<<");
+        String url = "http://192.168.100.3:8080/subject/getsubject/?Faculty="+get_faculty+"&Semester="+get_semester;
+       subjectAdapter=new SubjectAdapter(this,R.layout.textlayout);
+
+
+       listView.setAdapter(subjectAdapter);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        System.out.println("<<<<<<<<<<<<<<<<<<<");
                         try {
+                            System.out.println("<<<<<<<<<<<<<<<<<<<");
                             JSONArray jsonObject = response.getJSONArray("data");
                             for (int i = 0; i < jsonObject.length(); i++) {
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
                                 JSONObject object1 = jsonObject.getJSONObject(i);
-                                String faculty = object1.getString("subjectcode");
-                                String semester = object1.getString("SubjectName");
-                                String subject = object1.getString("Credit");
+
+                                String subjectcode = object1.getString("subjectcode");
+                                String subjectname = object1.getString("SubjectName");
+                                String credit = object1.getString("Credit");
+                                JSONObject picture=object1.getJSONObject("picture");
+                                String syllabus=picture.getString("url");
+
+
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
-                                System.out.print(faculty);
-                                System.out.print(semester);
-                                System.out.print(subject);
+                                System.out.print(subjectcode);
+                                System.out.print(subjectname);
+                                System.out.println(credit);
+                              System.out.println(syllabus);
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
-                             mArrayList.add(semester);
-                                adapter.notifyDataSetChanged();
+                              Subjectdisplay subjectdisplay=new Subjectdisplay(subjectcode,subjectname,credit,syllabus);
+                                subjectAdapter.add(subjectdisplay);
+                           // mArrayList.add(subjectname);
+                              //adapter.notifyDataSetChanged();
                             }
 //                            System.out.println(mArrayList);
                         } catch (JSONException e) {

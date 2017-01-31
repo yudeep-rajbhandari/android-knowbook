@@ -1,28 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/subjectcode"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dip"
-    android:textSize="16dip"
-    android:textStyle="bold" >
-</TextView>
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <TextView
+
+        android:layout_height="120dp"
+        android:layout_width="120dp"
+        android:id="@+id/subjectcode"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:textSize="16dip"
+        android:textAppearance="?android:textAppearanceLarge"
+
+
+
+        />
+    <TextView
+
+        android:layout_height="120dp"
+        android:layout_width="120dp"
         android:id="@+id/subjectname"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="10dip"
+        android:layout_toRightOf="@+id/subjectcode"
+        android:gravity="center"
         android:textSize="16dip"
-        android:textStyle="bold" >
-    </TextView>
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:textAppearance="?android:textAppearanceLarge"
+
+
+
+        />
+    <TextView
+
+        android:layout_height="120dp"
+        android:layout_width="120dp"
         android:id="@+id/credit"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="10dip"
+        android:layout_toRightOf="@+id/subjectname"
+        android:gravity="center"
         android:textSize="16dip"
-        android:textStyle="bold" >
-    </TextView>
+        android:textAppearance="?android:textAppearanceLarge"
+
+
+
+    />
+
+    <TextView
+
+        android:layout_height="120dp"
+        android:layout_width="120dp"
+        android:id="@+id/syllabus"
+        android:layout_below="@+id/credit"
+        android:gravity="center"
+        android:textSize="16dip"
+        android:textAppearance="?android:textAppearanceLarge"
+
+
+
+        />
+
+
+
 </RelativeLayout>

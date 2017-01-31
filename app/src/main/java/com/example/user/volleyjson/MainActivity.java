@@ -41,7 +41,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     Button button;
     TextView textView;
-    String url = "http://192.168.100.4:8080/information/faculty";
+    //String url = "http://192.168.100.4:8080/information/faculty";
     String url1 = "https://crackberry.com/sites/crackberry.com/files/styles/large/public/topic_images/2013/ANDROID.png?itok=xhm7jaxS";
     RequestQueue requestQueue;
     ImageView imageView;
