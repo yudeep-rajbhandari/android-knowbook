@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -49,8 +50,19 @@ public class showsubject extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-               // showsubject item=(showsubject)listView.getItemAtPosition()
-                Toast.makeText(showsubject.this,"to next intent",Toast.LENGTH_SHORT).show();
+             Subjectdisplay item=(Subjectdisplay)listView.getItemAtPosition(i);
+                String hope =item.getSubjectid();
+                Intent intent1=new Intent(showsubject.this,showbooks.class);
+                intent1.putExtra("subjectcode",item.getSubjectid());
+                //intent.putExtra("get_semester",spinner_semester.getSelectedItem().toString());
+                startActivity(intent1);
+             //  long item=listView.getItemIdAtPosition(i);
+                System.out.println("<<<<<<<<<<<<123");
+
+
+                System.out.println(hope);
+                System.out.println("<<<<<<<<<<<<<<<,");
+               //Toast.makeText(showsubject.this,item,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -67,6 +79,7 @@ public class showsubject extends AppCompatActivity {
                                 JSONObject object1 = jsonObject.getJSONObject(i);
 
                                 String subjectcode = object1.getString("subjectcode");
+                                String subjectid = object1.getString("_id");
                                 String subjectname = object1.getString("SubjectName");
                                 String credit = object1.getString("Credit");
                                 JSONObject picture=object1.getJSONObject("picture");
@@ -74,12 +87,13 @@ public class showsubject extends AppCompatActivity {
 
 
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                System.out.println(subjectid);
                                 System.out.print(subjectcode);
                                 System.out.print(subjectname);
                                 System.out.println(credit);
                               System.out.println(syllabus);
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
-                              Subjectdisplay subjectdisplay=new Subjectdisplay(subjectcode,subjectname,credit,syllabus);
+                              Subjectdisplay subjectdisplay=new Subjectdisplay(subjectcode,subjectname,credit,syllabus,subjectid);
                                 subjectAdapter.add(subjectdisplay);
                            // mArrayList.add(subjectname);
                               //adapter.notifyDataSetChanged();

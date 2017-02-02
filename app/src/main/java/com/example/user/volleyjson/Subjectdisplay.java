@@ -5,12 +5,22 @@ package com.example.user.volleyjson;
  */
 
 public class Subjectdisplay {
-    private String subjectcode,subjectname,credit, syllabus;
-    public Subjectdisplay(String subjectcode, String subjectname, String credit, String syllabus){
+    private String subjectcode,subjectname,credit, syllabus,subjectid;
+
+    public String getSubjectid() {
+        return subjectid;
+    }
+
+    public void setSubjectid(String subjectid) {
+        this.subjectid = subjectid;
+    }
+
+    public Subjectdisplay(String subjectcode, String subjectname, String credit, String syllabus, String subjectid){
         this.setSubjectcode(subjectcode);
         this.setSubjectname(subjectname);
         this.setCredit(credit);
         this.setSyllabus(syllabus);
+        this.setSubjectid(subjectid);
 
     }
 
