@@ -47,6 +47,7 @@ public class showbooks extends AppCompatActivity {
                 final TextView price=(TextView)mview.findViewById(R.id.textview_price);
                 final TextView availability=(TextView)mview.findViewById(R.id.textview_availability);
                 final TextView racknumber=(TextView)mview.findViewById(R.id.textview_racknumber);
+
                 bookname.setText(item.getBookName());
                 booktype.setText(item.getBooktype());
                 author.setText(item.getWriter());

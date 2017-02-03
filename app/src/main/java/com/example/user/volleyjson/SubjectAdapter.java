@@ -1,6 +1,8 @@
 package com.example.user.volleyjson;
 
+import android.app.DownloadManager;
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.method.LinkMovementMethod;
@@ -8,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +58,8 @@ public class SubjectAdapter extends ArrayAdapter {
             subjectshow.subjectcode=(TextView)row.findViewById(R.id.subjectcode);
             subjectshow.subjectname=(TextView)row.findViewById(R.id.subjectname);
             subjectshow.credit=(TextView)row.findViewById(R.id.credit);
-            subjectshow.syllabus=(TextView)row.findViewById(R.id.syllabus);
+            //subjectshow.syllabus=(TextView)row.findViewById(R.id.syllabus);
+            subjectshow.download_syllabus=(Button)row.findViewById(R.id.button_syllabus);
 
             row.setTag(subjectshow);
 
@@ -63,11 +68,25 @@ public class SubjectAdapter extends ArrayAdapter {
 else{
             subjectshow=(Subjectshow)row.getTag();
         }
-        Subjectdisplay subjectdisplay=(Subjectdisplay)this.getItem(position);
+        final Subjectdisplay subjectdisplay=(Subjectdisplay)this.getItem(position);
         subjectshow.subjectcode.setText(subjectdisplay.getSubjectcode());
         subjectshow.subjectname.setText(subjectdisplay.getSubjectname());
         subjectshow.credit.setText(subjectdisplay.getCredit());
-        subjectshow.syllabus.setText(subjectdisplay.getSyllabus());
+        //subjectshow.syllabus.setText(subjectdisplay.getSyllabus());
+        subjectshow.download_syllabus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"downloading..",Toast.LENGTH_SHORT).show();
+                DownloadManager downloadManager=(DownloadManager)getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+                Uri uri = Uri.parse(subjectdisplay.getSyllabus());
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setTitle("syllabus_"+subjectdisplay.getSubjectname());
+                request.setDescription("Downloading");
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                //request.setDestinationUri(Uri.parse("file://" + folderName + "/myfile.mp3"));
+                downloadManager.enqueue(request);
+            }
+        });
 
 
         return row;
@@ -76,6 +95,7 @@ else{
     static class Subjectshow{
 
     TextView subjectcode,subjectname,credit,syllabus;
+        Button download_syllabus;
 
 
 

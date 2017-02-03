@@ -22,7 +22,7 @@
         android:id="@+id/spinner" />
 
     <Button
-        android:text="Button"
+        android:text="Show Subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner2"
@@ -39,4 +39,16 @@
         android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Show Routine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_routine"
+        android:layout_alignBaseline="@+id/button_subject"
+        android:layout_alignBottom="@+id/button_subject"
+        android:layout_toRightOf="@+id/button_subject"
+        android:layout_toEndOf="@+id/button_subject"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
 </RelativeLayout>
