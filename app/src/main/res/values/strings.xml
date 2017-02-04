@@ -19,4 +19,25 @@
     </string-array>
 
 
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Courses!</string>
+    <string name="slide_1_desc">all the courses you will be having</string>
+
+    <string name="slide_2_title">Syllabus</string>
+    <string name="slide_2_desc">know  syllabus of every course!</string>
+
+    <string name="slide_3_title">Routine</string>
+    <string name="slide_3_desc">with the routine you will know about your class!</string>
+
+    <string name="slide_4_title">Books</string>
+    <string name="slide_4_desc">know which books to read!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
+
 </resources>

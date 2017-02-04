@@ -63,45 +63,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // mArrayList = new ArrayList<String>();
+        // mArrayList = new ArrayList<String>();
 //        adapter = new ArrayAdapter<String>(this,
 //                R.layout.textlayout, R.id.subject, mArrayList);
 
-       // listView = (ListView) findViewById(R.id.list_view);
-       // listView.setAdapter(adapter);
-        spinner_faculty=(Spinner)findViewById(R.id.spinner);
-        spinner_semester=(Spinner)findViewById(R.id.spinner2) ;
-        button_showsubject=(Button)findViewById(R.id.button_subject);
-        String Faculty []={"CE","CS"};
-        String Semester []={"1","2","3","4","5","6","7","8"};
+        // listView = (ListView) findViewById(R.id.list_view);
+        // listView.setAdapter(adapter);
+        spinner_faculty = (Spinner) findViewById(R.id.spinner);
+        spinner_semester = (Spinner) findViewById(R.id.spinner2);
+        button_showsubject = (Button) findViewById(R.id.button_subject);
+        String Faculty[] = {"CE", "CS"};
+        String Semester[] = {"1", "2", "3", "4", "5", "6", "7", "8"};
 
-        ArrayAdapter<String> spinnerArrayAdapter_faculty = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, Faculty);
+        ArrayAdapter<String> spinnerArrayAdapter_faculty = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Faculty);
         spinnerArrayAdapter_faculty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner_faculty.setAdapter(spinnerArrayAdapter_faculty);
 
-        ArrayAdapter<String> spinnerArrayAdapter_semester = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, Semester);
+        ArrayAdapter<String> spinnerArrayAdapter_semester = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Semester);
         spinnerArrayAdapter_semester.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner_semester.setAdapter(spinnerArrayAdapter_semester);
 
         button_showsubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              Intent intent=new Intent(MainActivity.this,showsubject.class);
-                intent.putExtra("get_faculty",spinner_faculty.getSelectedItem().toString());
-                intent.putExtra("get_semester",spinner_semester.getSelectedItem().toString());
+                Intent intent = new Intent(MainActivity.this, showsubject.class);
+                intent.putExtra("get_faculty", spinner_faculty.getSelectedItem().toString());
+                intent.putExtra("get_semester", spinner_semester.getSelectedItem().toString());
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
-
-
-
-
 
 
     }

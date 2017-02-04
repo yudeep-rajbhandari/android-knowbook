@@ -1,8 +1,10 @@
 package com.example.user.volleyjson;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,43 +28,49 @@ public class showsubject extends AppCompatActivity {
     ListView listView;
     //ArrayList mArrayList;
     //ArrayAdapter adapter;
-   SubjectAdapter subjectAdapter;
+    SubjectAdapter subjectAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showsubject);
+
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 //        mArrayList = new ArrayList<String>();
 //        adapter = new ArrayAdapter<String>(this,
 //               R.layout.textlayout, R.id.credit, mArrayList);
-            listView = (ListView) findViewById(R.id.list_view);
+        listView = (ListView) findViewById(R.id.list_view);
 
 
-        String get_faculty=getIntent().getStringExtra("get_faculty");
-        String get_semester=getIntent().getStringExtra("get_semester");
-        Toast.makeText(showsubject.this,get_faculty,Toast.LENGTH_LONG).show();
+
+        String get_faculty = getIntent().getStringExtra("get_faculty");
+        String get_semester = getIntent().getStringExtra("get_semester");
+        Toast.makeText(showsubject.this, get_faculty, Toast.LENGTH_LONG).show();
         System.out.println("<<<<<<<<<<<<<<<<<<<");
-        String url = "http://knowbook.herokuapp.com/subject/getsubject/?Faculty="+get_faculty+"&Semester="+get_semester;
-       subjectAdapter=new SubjectAdapter(this,R.layout.textlayout);
+        String url = "http://knowbook.herokuapp.com/subject/getsubject/?Faculty=" + get_faculty + "&Semester=" + get_semester;
+        subjectAdapter = new SubjectAdapter(this, R.layout.textlayout);
 
 
-       listView.setAdapter(subjectAdapter);
+        listView.setAdapter(subjectAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-             Subjectdisplay item=(Subjectdisplay)listView.getItemAtPosition(i);
-                String hope =item.getSubjectid();
-                Intent intent1=new Intent(showsubject.this,showbooks.class);
-                intent1.putExtra("subjectcode",item.getSubjectid());
+                Subjectdisplay item = (Subjectdisplay) listView.getItemAtPosition(i);
+                String hope = item.getSubjectid();
+                Intent intent1 = new Intent(showsubject.this, showbooks.class);
+                intent1.putExtra("subjectcode", item.getSubjectid());
                 //intent.putExtra("get_semester",spinner_semester.getSelectedItem().toString());
                 startActivity(intent1);
-             //  long item=listView.getItemIdAtPosition(i);
+                //  long item=listView.getItemIdAtPosition(i);
                 System.out.println("<<<<<<<<<<<<123");
 
 
                 System.out.println(hope);
                 System.out.println("<<<<<<<<<<<<<<<,");
-               //Toast.makeText(showsubject.this,item,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(showsubject.this,item,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,8 +90,8 @@ public class showsubject extends AppCompatActivity {
                                 String subjectid = object1.getString("_id");
                                 String subjectname = object1.getString("SubjectName");
                                 String credit = object1.getString("Credit");
-                                JSONObject picture=object1.getJSONObject("picture");
-                                String syllabus=picture.getString("url");
+                                JSONObject picture = object1.getJSONObject("picture");
+                                String syllabus = picture.getString("url");
 
 
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
@@ -91,12 +99,12 @@ public class showsubject extends AppCompatActivity {
                                 System.out.print(subjectcode);
                                 System.out.print(subjectname);
                                 System.out.println(credit);
-                              System.out.println(syllabus);
+                                System.out.println(syllabus);
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
-                              Subjectdisplay subjectdisplay=new Subjectdisplay(subjectcode,subjectname,credit,syllabus,subjectid);
+                                Subjectdisplay subjectdisplay = new Subjectdisplay(subjectcode, subjectname, credit, syllabus, subjectid);
                                 subjectAdapter.add(subjectdisplay);
-                           // mArrayList.add(subjectname);
-                              //adapter.notifyDataSetChanged();
+                                // mArrayList.add(subjectname);
+                                //adapter.notifyDataSetChanged();
                             }
 //                            System.out.println(mArrayList);
                         } catch (JSONException e) {
@@ -119,6 +127,16 @@ public class showsubject extends AppCompatActivity {
         MySingleton.getInstance(showsubject.this).addToRequestQueue(jsonObjectRequest);
 
 
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id= item.getItemId();
+
+        if(id==android.R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,8 +1,10 @@
 package com.example.user.volleyjson;
 
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -126,5 +128,19 @@ public class showbooks extends AppCompatActivity {
         // System.out.println(mArrayList);
         MySingleton.getInstance(showbooks.this).addToRequestQueue(jsonObjectRequest);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id= item.getItemId();
+
+        if(id==android.R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
