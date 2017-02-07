@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
@@ -35,6 +36,7 @@ public class Routineviewer2 extends AppCompatActivity{
     RoutineAdapter routineAdapter;
     //Spinner spinner_routine;
 
+
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class Routineviewer2 extends AppCompatActivity{
         setContentView(R.layout.activity_routineviewer2);
 //        toolbar=(Toolbar)findViewById(R.id.app_bar);
 //        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         final String get_faculty = getIntent().getStringExtra("get_faculty");
         final String get_semester = getIntent().getStringExtra("get_semester");
         Toast.makeText(Routineviewer2.this, get_faculty, Toast.LENGTH_LONG).show();
@@ -60,6 +65,15 @@ public class Routineviewer2 extends AppCompatActivity{
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
+        if (id == android.R.id.home) {
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

@@ -15,16 +15,12 @@
         <activity
             android:name=".showsubject"
             android:label="Subjects">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+
         </activity>
         <activity
             android:name=".showbooks"
             android:label="Book List">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".showsubject" />
+
         </activity>
         <activity
             android:name=".sliderActivity"

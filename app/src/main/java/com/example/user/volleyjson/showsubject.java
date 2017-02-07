@@ -45,7 +45,6 @@ public class showsubject extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view);
 
 
-
         String get_faculty = getIntent().getStringExtra("get_faculty");
         String get_semester = getIntent().getStringExtra("get_semester");
         Toast.makeText(showsubject.this, get_faculty, Toast.LENGTH_LONG).show();
@@ -131,10 +130,10 @@ public class showsubject extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id= item.getItemId();
+        int id = item.getItemId();
 
-        if(id==android.R.id.home){
-            NavUtils.navigateUpFromSameTask(this);
+        if (id == android.R.id.home) {
+            onBackPressed();
         }
 
         return super.onOptionsItemSelected(item);
