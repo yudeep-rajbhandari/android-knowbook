@@ -2,26 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.volleyjson">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/bookopenflat"
+        android:label="KnowBooks"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".showsubject"
-            android:label="Subjects"
-            >
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".showsubject"
+            android:label="Subjects">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".showbooks"
-
+        <activity
+            android:name=".showbooks"
             android:label="Book List">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -30,18 +29,18 @@
         <activity
             android:name=".sliderActivity"
             android:label="@string/title_activity_welcome"
-            android:theme="@style/apptheme" >
-
-        </activity>
-        <activity android:name=".WelcomeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            >
+            android:theme="@style/apptheme" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Routineviewer" />
+        <activity android:name=".Routineviewer2"></activity>
     </application>
 
 </manifest>

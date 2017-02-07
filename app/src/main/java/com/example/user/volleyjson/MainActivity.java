@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner_semester;
     Button button_showsubject;
     String send_semester;
+    Button button_showroutine;
     String send_faculty;
 
 
@@ -74,6 +75,17 @@ public class MainActivity extends AppCompatActivity {
         button_showsubject = (Button) findViewById(R.id.button_subject);
         String Faculty[] = {"CE", "CS"};
         String Semester[] = {"1", "2", "3", "4", "5", "6", "7", "8"};
+        button_showroutine=(Button)findViewById(R.id.button_routine);
+
+        button_showroutine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Routineviewer2.class);
+                intent.putExtra("get_faculty", spinner_faculty.getSelectedItem().toString());
+                intent.putExtra("get_semester", spinner_semester.getSelectedItem().toString());
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<String> spinnerArrayAdapter_faculty = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Faculty);
         spinnerArrayAdapter_faculty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
