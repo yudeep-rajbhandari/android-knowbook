@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 
 public class showsubject extends AppCompatActivity {
 
+
     ListView listView;
     //ArrayList mArrayList;
     //ArrayAdapter adapter;
@@ -35,7 +37,8 @@ public class showsubject extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showsubject);
 
-
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

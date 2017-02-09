@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.volleyjson">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,17 +10,15 @@
         android:label="KnowBooks"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+
+            />
         <activity
             android:name=".showsubject"
-            android:label="Subjects">
-
-        </activity>
+            android:label="Subjects"></activity>
         <activity
             android:name=".showbooks"
-            android:label="Book List">
-
-        </activity>
+            android:label="Book List"></activity>
         <activity
             android:name=".sliderActivity"
             android:label="@string/title_activity_welcome"
@@ -36,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Routineviewer" />
-        <activity android:name=".Routineviewer2"></activity>
+        <activity android:name=".Routineviewer2" />
     </application>
 
 </manifest>

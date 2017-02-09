@@ -44,8 +44,11 @@ public class Routineviewer2 extends AppCompatActivity{
         setContentView(R.layout.activity_routineviewer2);
 //        toolbar=(Toolbar)findViewById(R.id.app_bar);
 //        setSupportActionBar(toolbar);
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         final String get_faculty = getIntent().getStringExtra("get_faculty");
         final String get_semester = getIntent().getStringExtra("get_semester");

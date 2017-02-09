@@ -4,6 +4,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +29,12 @@ public class showbooks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showbooks);
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         listView1=(ListView)findViewById(R.id.list_view_books);
         String subjectcode=getIntent().getStringExtra("subjectcode");
         Toast.makeText(showbooks.this,subjectcode,Toast.LENGTH_LONG).show();
@@ -127,9 +134,6 @@ public class showbooks extends AppCompatActivity {
         });
         // System.out.println(mArrayList);
         MySingleton.getInstance(showbooks.this).addToRequestQueue(jsonObjectRequest);
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

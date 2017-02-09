@@ -3,8 +3,12 @@ package com.example.user.volleyjson;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.Settings;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,6 +43,11 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
+
+
     Button button;
     TextView textView;
     //String url = "http://192.168.100.4:8080/information/faculty";
@@ -64,6 +73,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
         // mArrayList = new ArrayList<String>();
 //        adapter = new ArrayAdapter<String>(this,
 //                R.layout.textlayout, R.id.subject, mArrayList);
@@ -108,9 +130,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(mToggle.onOptionsItemSelected(item)){
+            return  true;
+        }
+        return super.onOptionsItemSelected(item);
 
 
-     /*   button.setOnClickListener(new View.OnClickListener() {
+    }
+
+
+    /*   button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

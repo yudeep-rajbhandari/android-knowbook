@@ -7,12 +7,16 @@
     android:layout_height="match_parent"
 
     tools:context="com.example.user.volleyjson.Routineviewer2">
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar"
+        />
 
     <android.support.design.widget.TabLayout
+        android:layout_below="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tab1"
-
         android:background="@color/colorPrimaryDark"
         app:tabMode="scrollable"
         app:tabIndicatorColor="@color/dot_dark_screen1"
@@ -21,9 +25,12 @@
 
     </android.support.design.widget.TabLayout>
     <android.support.v4.view.ViewPager
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/view_pager"
-        android:layout_below="@+id/tab1"></android.support.v4.view.ViewPager>
+        android:layout_below="@+id/tab1">
+
+    </android.support.v4.view.ViewPager>
 
 </RelativeLayout>
