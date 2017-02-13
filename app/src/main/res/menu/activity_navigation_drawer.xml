@@ -7,17 +7,14 @@
             android:icon="@mipmap/ic_home_black_24dp"
             android:title="Home" />
         <item
-            android:id="@+id/nav_subject"
+            android:id="@+id/nav_project"
             android:icon="@mipmap/ic_assignment_black_24dp"
-            android:title="Subjects" />
+            android:title="Project" />
         <item
-            android:id="@+id/nav_book"
+            android:id="@+id/nav_about"
             android:icon="@mipmap/ic_book_black_24dp"
-            android:title="Books" />
-        <item
-            android:id="@+id/nav_routine"
-            android:icon="@mipmap/ic_event_note_black_24dp"
-            android:title="Routine" />
+            android:title="About Us" />
+
     </group>
 
 
