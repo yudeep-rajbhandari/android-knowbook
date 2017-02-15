@@ -24,24 +24,6 @@
             />
 
 
-
-        <Button
-            android:id="@+id/button_subject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/spinner2"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="49dp"
-            android:text="Subject"
-
-            android:background="@drawable/drawable"
-
-
-            />
-
-
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="150dp"
@@ -52,21 +34,6 @@
             android:layout_marginLeft="40dp"
             android:background="@android:drawable/btn_dropdown" />
 
-
-        <Button
-            android:id="@+id/button_routine"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_toRightOf="@id/button_subject"
-            android:layout_alignBaseline="@id/button_subject"
-            android:layout_marginStart="35dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/drawable"
-            android:text="Routine"
-            style="@style/ButtonNormalTextWithIcon"
-
-            />
 
         <TextView
             android:id="@+id/textView11"
@@ -104,19 +71,51 @@
             android:layout_marginTop="25dp"
             android:layout_below="@+id/app_bar" />
 
+
+
         <Button
             android:id="@+id/button_note"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="100dp"
-            android:background="@drawable/drawable"
-            android:text="TEXT"
-            style="@style/ButtonNormalTextWithIcon"
-
-            android:layout_below="@+id/button_subject"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp" />
+            android:background="@drawable/notes_final1"
+            android:layout_marginTop="400dp"
+            android:layout_marginLeft="20dp"
 
 
+
+             />
+
+        <Button
+            android:id="@+id/button_subject"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/spinner"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+
+
+            android:background="@drawable/subjects_final"
+
+
+             />
+        <Button
+            android:id="@+id/button_routine"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="@drawable/routine_final1"
+            android:layout_below="@+id/spinner2"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="210dp"
+
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="@drawable/question_final"
+            android:layout_marginTop="400dp"
+            android:layout_marginLeft="210dp"
+            android:id="@+id/button_question" />
 
 
     </RelativeLayout>

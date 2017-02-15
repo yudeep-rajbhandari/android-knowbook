@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
     String send_semester;
     Button button_showroutine;
     String send_faculty;
+    Button profile;
+    Button notes;
+    Button question;
+
 
 
     @Override
@@ -83,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mDrawerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"selected",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
 
@@ -92,12 +103,24 @@ public class MainActivity extends AppCompatActivity {
 
         // listView = (ListView) findViewById(R.id.list_view);
         // listView.setAdapter(adapter);
+       // profile=(Button)findViewById(R.id.profile);
         spinner_faculty = (Spinner) findViewById(R.id.spinner);
         spinner_semester = (Spinner) findViewById(R.id.spinner2);
         button_showsubject = (Button) findViewById(R.id.button_subject);
         String Faculty[] = {"CE", "CS"};
         String Semester[] = {"1", "2", "3", "4", "5", "6", "7", "8"};
         button_showroutine=(Button)findViewById(R.id.button_routine);
+        notes=(Button )findViewById(R.id.button_note);
+        question=(Button)findViewById(R.id.button_question);
+
+
+     question.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             Toast.makeText(MainActivity.this,"not loaded",Toast.LENGTH_LONG).show();
+         }
+     });
+
 
         button_showroutine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +131,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, profile.class);
+//
+//               ;
+//                startActivity(intent);
+//            }
+//        });
 
         ArrayAdapter<String> spinnerArrayAdapter_faculty = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Faculty);
         spinnerArrayAdapter_faculty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
@@ -117,10 +149,22 @@ public class MainActivity extends AppCompatActivity {
         spinnerArrayAdapter_semester.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner_semester.setAdapter(spinnerArrayAdapter_semester);
 
+
+
         button_showsubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, showsubject.class);
+                intent.putExtra("get_faculty", spinner_faculty.getSelectedItem().toString());
+                intent.putExtra("get_semester", spinner_semester.getSelectedItem().toString());
+                startActivity(intent);
+            }
+        });
+
+        notes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, notes.class);
                 intent.putExtra("get_faculty", spinner_faculty.getSelectedItem().toString());
                 intent.putExtra("get_semester", spinner_semester.getSelectedItem().toString());
                 startActivity(intent);

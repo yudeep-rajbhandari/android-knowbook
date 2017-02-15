@@ -58,7 +58,10 @@ public class Sunday extends android.support.v4.app.Fragment {
                         System.out.println("<<<<<<<<<<<<<<<<<<<");
                         try {
                             System.out.println("<<<<<<<<<<<<<<<<<<<");
+
                             JSONArray jsonObject = response.getJSONArray("data");
+
+
                             for (int i = 0; i < jsonObject.length(); i++) {
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
                                 JSONObject object1 = jsonObject.getJSONObject(i);

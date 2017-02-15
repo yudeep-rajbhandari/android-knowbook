@@ -10,15 +10,13 @@
         android:label="KnowBooks"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-
-            />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".showsubject"
-            android:label="Subjects"></activity>
+            android:label="Subjects" />
         <activity
             android:name=".showbooks"
-            android:label="Book List"></activity>
+            android:label="Book List" />
         <activity
             android:name=".sliderActivity"
             android:label="@string/title_activity_welcome"
@@ -34,6 +32,8 @@
         </activity>
         <activity android:name=".Routineviewer" />
         <activity android:name=".Routineviewer2" />
+        <activity android:name=".profile" />
+        <activity android:name=".notes"></activity>
     </application>
 
 </manifest>
