@@ -117,6 +117,26 @@
             android:layout_marginLeft="210dp"
             android:id="@+id/button_question" />
 
+        <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_note"
+            android:layout_alignRight="@+id/button_note"
+            android:layout_alignEnd="@+id/button_note"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:id="@+id/button_profile" />
+
+        <Button
+            android:text="mysubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_question"
+            android:layout_alignLeft="@+id/textView11"
+            android:layout_alignStart="@+id/textView11"
+            android:id="@+id/button_seemysubject" />
+
 
     </RelativeLayout>
 

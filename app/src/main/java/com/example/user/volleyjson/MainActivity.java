@@ -1,8 +1,7 @@
 package com.example.user.volleyjson;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.provider.Settings;
+import android.database.DatabaseUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,28 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Cache;
-import com.android.volley.Network;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.nio.channels.Pipe;
-import java.sql.Array;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     Button profile;
     Button notes;
     Button question;
+    Button getmysubject;
+
 
 
 
@@ -107,11 +88,27 @@ public class MainActivity extends AppCompatActivity {
         spinner_faculty = (Spinner) findViewById(R.id.spinner);
         spinner_semester = (Spinner) findViewById(R.id.spinner2);
         button_showsubject = (Button) findViewById(R.id.button_subject);
+        listView = (ListView) findViewById(R.id.list_view);
         String Faculty[] = {"CE", "CS"};
         String Semester[] = {"1", "2", "3", "4", "5", "6", "7", "8"};
         button_showroutine=(Button)findViewById(R.id.button_routine);
         notes=(Button )findViewById(R.id.button_note);
         question=(Button)findViewById(R.id.button_question);
+        profile=(Button)findViewById(R.id.button_profile);
+        getmysubject=(Button)findViewById(R.id.button_seemysubject);
+
+
+        getmysubject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, see_my_subject.class);
+
+
+                startActivity(intent);
+
+               // listView = (ListView) findViewById(R.id.list_view);
+                           }
+        });
 
 
      question.setOnClickListener(new View.OnClickListener() {
@@ -131,15 +128,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, profile.class);
-//
-//               ;
-//                startActivity(intent);
-//            }
-//        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, profile.class);
+
+               ;
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<String> spinnerArrayAdapter_faculty = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Faculty);
         spinnerArrayAdapter_faculty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view

@@ -22,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class showsubject extends AppCompatActivity {
@@ -37,7 +38,8 @@ public class showsubject extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showsubject);
 
-        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -48,8 +50,8 @@ public class showsubject extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view);
 
 
-        String get_faculty = getIntent().getStringExtra("get_faculty");
-        String get_semester = getIntent().getStringExtra("get_semester");
+        final String get_faculty = getIntent().getStringExtra("get_faculty");
+        final String get_semester = getIntent().getStringExtra("get_semester");
         Toast.makeText(showsubject.this, get_faculty, Toast.LENGTH_LONG).show();
         System.out.println("<<<<<<<<<<<<<<<<<<<");
         String url = "http://knowbook.herokuapp.com/subject/getsubject/?Faculty=" + get_faculty + "&Semester=" + get_semester;
@@ -93,9 +95,15 @@ public class showsubject extends AppCompatActivity {
                                 String subjectname = object1.getString("SubjectName");
                                 String credit = object1.getString("Credit");
                                 JSONObject picture = object1.getJSONObject("picture");
+
                                 String syllabus = picture.getString("url");
+                                DatabaseHelper mydb = new DatabaseHelper(getApplicationContext());
 
-
+                                mydb.insertsubject(subjectid, subjectname, subjectcode, credit, syllabus, get_faculty, get_semester);
+                                ArrayList<DatabaseHelper.Subject> subList=mydb.getSubjects();
+                                for(DatabaseHelper.Subject subject:subList){
+                                    subject.printSubject();
+                                }
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
                                 System.out.println(subjectid);
                                 System.out.print(subjectcode);
@@ -105,6 +113,7 @@ public class showsubject extends AppCompatActivity {
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
                                 Subjectdisplay subjectdisplay = new Subjectdisplay(subjectcode, subjectname, credit, syllabus, subjectid);
                                 subjectAdapter.add(subjectdisplay);
+
                                 // mArrayList.add(subjectname);
                                 //adapter.notifyDataSetChanged();
                             }

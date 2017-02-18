@@ -101,6 +101,7 @@ public class showbooks extends AppCompatActivity {
                                 String pdf=picture.getString("url");
 
 
+
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
                                 System.out.println(bookName);
                                 System.out.print(writer);
