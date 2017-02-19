@@ -118,7 +118,7 @@
             android:id="@+id/button_question" />
 
         <Button
-            android:text="Button"
+            android:text="Profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/button_note"
@@ -136,6 +136,15 @@
             android:layout_alignLeft="@+id/textView11"
             android:layout_alignStart="@+id/textView11"
             android:id="@+id/button_seemysubject" />
+
+        <Button
+            android:text="Myroutine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/textView11"
+            android:layout_toStartOf="@+id/textView11"
+            android:id="@+id/see_my_routine"
+            android:layout_below="@+id/button_subject" />
 
 
     </RelativeLayout>

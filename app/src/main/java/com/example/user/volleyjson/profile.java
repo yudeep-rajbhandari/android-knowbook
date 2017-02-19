@@ -20,7 +20,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class profile extends AppCompatActivity {
 EditText name;
@@ -85,6 +90,121 @@ EditText name;
 
                 String url = "http://knowbook.herokuapp.com/subject/getsubject/?Faculty=" +spinner_profile_faculty.getSelectedItem().toString() + "&Semester=" +Spinner_profile_semester.getSelectedItem().toString();
                 String bookurl = "http://knowbook.herokuapp.com/books/Request2";
+
+                String routineurl = "http://knowbook.herokuapp.com/routine/getroutine/";
+                JsonObjectRequest jsonObjectRequest2 = new JsonObjectRequest(Request.Method.GET, routineurl, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                try {
+                                    System.out.println("<<<<<<<<<<<<<<<<<<<");
+
+                                    JSONArray jsonObject = response.getJSONArray("data");
+                                    DatabaseHelper mydb = new DatabaseHelper(getApplicationContext());
+                                    DatabaseHelper.Routine routine=mydb.new Routine();
+                                    if(routine!=null){
+                                        mydb.clear2();
+                                    }
+
+
+                                    for (int i = 0; i < jsonObject.length(); i++) {
+                                        System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        JSONObject object1 = jsonObject.getJSONObject(i);
+
+                                        String id = object1.getString("_id");
+
+                                        String day = object1.getString("day");
+                                        String startingtime = object1.getString("startingTime");
+                                        String endingtime = object1.getString("endingTime");
+                                        String teacher = object1.getString("Teacher");
+                                        JSONObject picture = object1.getJSONObject("Subjectid");
+                                        String subjectname = picture.getString("SubjectName");
+                                        String subjectcode = picture.getString("subjectcode");
+                                        String faculty = picture.getString("Faculties");
+                                        String semester = picture.getString("Semester");
+
+
+
+                                        System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        System.out.println(day);
+                                        // System.out.println(spinner_routine.getSelectedItem().toString());
+                                        System.out.print(startingtime);
+                                        System.out.print(endingtime);
+                                        System.out.println(teacher);
+                                        System.out.println(subjectname);
+                                        System.out.println(subjectcode);
+                                        System.out.println(faculty);
+
+                                        System.out.println(semester);
+                                        String date1=null;
+                                        String date3 = null;
+
+                                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                                        df.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                                        try {
+                                            Date date= (Date) df.parseObject(startingtime);
+                                            Date date2=(Date) df.parseObject(endingtime);
+                                            //date.getTimezoneOffset(TimeZone.getTimeZone("GMT+5:45"));
+//                                   df.setTimeZone(TimeZone.getDefault());
+//                                    String formattedDate = df.format(date);
+//                                   System.out.println(formattedDate);
+
+                                            date1= new SimpleDateFormat("HH:mm aa").format(date);
+                                            date3=new SimpleDateFormat("HH:mm aa").format(date2);
+                                            System.out.println(date1);
+                                            System.out.println(date3);
+
+
+
+
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                        }
+                                        // javax.xml.bind.DatatypeConverter.parseDateTime("2010-01-01T12:00:00Z");
+
+
+                                        System.out.println("<<<<<<<<<<<<<<<<<<<from");
+                                        if (faculty.equals(spinner_profile_faculty.getSelectedItem().toString()) && semester.equals(Spinner_profile_semester.getSelectedItem().toString()) ) {
+                                            System.out.println("<<<<<getjherer");
+                                            mydb.insertroutine(id, day, date1, date3, teacher, subjectcode, subjectname);
+
+
+                                            System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                            System.out.println(id);
+                                            System.out.print(day);
+                                            System.out.print(date1);
+                                            System.out.println(date3);
+                                            System.out.println(teacher);
+                                            System.out.println(subjectcode);
+                                            System.out.println(subjectname);
+                                            System.out.println("<<<<<<<<<<<<<<<<<<<");
+
+
+                                        } else {
+                                            System.out.println("something is wrong");
+                                        }
+                                    }
+//                            System.out.println(mArrayList);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+                        Toast.makeText(profile.this, "something went wrong", Toast.LENGTH_LONG).show();
+
+                    }
+
+                });
+                // System.out.println(mArrayList);
+                MySingleton.getInstance(profile.this).addToRequestQueue(jsonObjectRequest2);
+
 
                 JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.GET, bookurl, null,
                         new Response.Listener<JSONObject>() {

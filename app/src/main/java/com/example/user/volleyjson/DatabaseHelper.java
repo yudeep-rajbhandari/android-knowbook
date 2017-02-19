@@ -26,6 +26,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "Semester";
 
 
+    public static final String TABLE_NAME4 = "Routine";
+    public static final String Rout_1 = "ID";
+    public static final String Rout_2 = "day";
+    public static final String Rout_3 = "starting_time";
+    public static final String Rout_4 = "ending_time";
+    public static final String Rout_5 = "teacher";
+    public static final String Rout_6 = "subjectname";
+    public static final String Rout_7 = "subjectcode";
+
+
+
 
 
     public static final String TABLE_NAME3 = "Books";
@@ -90,6 +101,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
+    public class Routine{
+        String ID,day,starting_time,ending_time,teacher, subjectname,subjectcode;
+        public  Routine(String ID,String day, String starting_time, String ending_time, String teacher, String subjectname, String subjectcode
+        ){
+            this.ID=ID;
+            this.starting_time=starting_time;
+            this.ending_time=ending_time;
+            this.teacher=teacher;
+            this.subjectname=subjectname;
+            this.subjectcode=subjectcode;
+            this.day=day;
+
+        }
+        public  Routine(){
+
+        }
+
+
+    }
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -98,11 +129,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME1 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,Name TEXT,Faculty TEXT,Semester INTEGER)");
         sqLiteDatabase.execSQL("create table " + TABLE_NAME2 + " (ID INTEGER,subject_name TEXT,subject_code TEXT,credit TEXT,syllabus TEXT,faculty TEXT,semester INTEGER)");
         sqLiteDatabase.execSQL("create table " + TABLE_NAME3 + " (ID INTEGER,book_name TEXT,writer TEXT,booktype TEXT,price TEXT,availabiltiy TEXT,publication TEXT,racknumber TEXT,pdf TEXT,subjectid TEXT)");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME4 + " (ID INTEGER,day TEXT,starting_time TEXT,ending_time TEXT,teacher TEXT,subjectname TEXT,subjectcode TEXT)");
 
     }
 
@@ -111,6 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME1);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME2);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME3);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME4);
 
         onCreate(sqLiteDatabase);
 
@@ -145,6 +179,10 @@ public void clear(){
     public void clear1(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.delete(TABLE_NAME3,null,null);
+    }
+    public void clear2(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(TABLE_NAME4,null,null);
     }
     public boolean insertsubject(String ID, String subject_name, String subject_code, String credit, String syllabus, String faculty, String semester) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -192,6 +230,50 @@ public void clear(){
         } else
             return true;
     }
+
+
+    public boolean insertroutine(String ID, String day, String starting_time, String ending_time, String teacher, String subjectname, String subjectcode) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Rout_1, ID);
+        contentValues.put(Rout_2,day );
+        contentValues.put(Rout_3,starting_time );
+        contentValues.put(Rout_4,ending_time );
+        contentValues.put(Rout_5, teacher);
+        contentValues.put(Rout_6,subjectcode );
+        contentValues.put(Rout_7,subjectname );
+
+        long result = sqLiteDatabase.insert(TABLE_NAME4, null, contentValues);
+
+        if (result == -1) {
+            return false;
+        } else
+            return true;
+    }
+
+    public ArrayList<Routine> getRoutine(String getday){
+        ArrayList<Routine> routinelist=new ArrayList<>();
+        SQLiteDatabase database=this.getReadableDatabase();
+        String Query ="SELECT * FROM "+TABLE_NAME4+" WHERE day ='"+getday+"'" ;
+        System.out.println(Query);
+        Cursor cursor=database.rawQuery(Query,null);
+        while(cursor.moveToNext()){
+           routinelist.add(
+                   new Routine(cursor.getString(cursor.getColumnIndex(Rout_1)),
+                           cursor.getString(cursor.getColumnIndex(Rout_2)),
+                           cursor.getString(cursor.getColumnIndex(Rout_3)),
+                           cursor.getString(cursor.getColumnIndex(Rout_4)),
+                           cursor.getString(cursor.getColumnIndex(Rout_5)),
+                           cursor.getString(cursor.getColumnIndex(Rout_6)),
+                           cursor.getString(cursor.getColumnIndex(Rout_7))
+                   )
+           );
+        }
+        return  routinelist;
+    }
+
     public ArrayList<Subject> getSubjects(){
         ArrayList<Subject> subjectlist=new ArrayList<>();
         SQLiteDatabase database=this.getReadableDatabase();
@@ -199,16 +281,16 @@ public void clear(){
         System.out.println(Query);
         Cursor cursor=database.rawQuery(Query,null);
         while(cursor.moveToNext()){
-           subjectlist.add(
-                   new Subject(cursor.getString(cursor.getColumnIndex(SUB_1)),
-                           cursor.getString(cursor.getColumnIndex(SUB_2)),
-                           cursor.getString(cursor.getColumnIndex(SUB_3)),
-                           cursor.getString(cursor.getColumnIndex(SUB_4)),
-                           cursor.getString(cursor.getColumnIndex(SUB_5)),
-                           cursor.getString(cursor.getColumnIndex(SUB_6)),
-                           cursor.getString(cursor.getColumnIndex(SUB_7))
-                   )
-           );
+            subjectlist.add(
+                    new Subject(cursor.getString(cursor.getColumnIndex(SUB_1)),
+                            cursor.getString(cursor.getColumnIndex(SUB_2)),
+                            cursor.getString(cursor.getColumnIndex(SUB_3)),
+                            cursor.getString(cursor.getColumnIndex(SUB_4)),
+                            cursor.getString(cursor.getColumnIndex(SUB_5)),
+                            cursor.getString(cursor.getColumnIndex(SUB_6)),
+                            cursor.getString(cursor.getColumnIndex(SUB_7))
+                    )
+            );
         }
         return  subjectlist;
     }

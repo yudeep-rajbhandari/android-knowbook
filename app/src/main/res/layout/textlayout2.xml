@@ -6,13 +6,13 @@
 <TextView
     android:text="Book Name:"
     android:layout_width="wrap_content"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:textSize="20dp"
     android:id="@+id/bookname"/>
     <TextView
         android:text="bookname1"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
 
 android:textSize="20dp"
         android:id="@+id/bookname1"

@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     Button notes;
     Button question;
     Button getmysubject;
+    Button getmyroutine;
 
 
 
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         spinner_faculty = (Spinner) findViewById(R.id.spinner);
         spinner_semester = (Spinner) findViewById(R.id.spinner2);
         button_showsubject = (Button) findViewById(R.id.button_subject);
+        getmyroutine=(Button)findViewById(R.id.see_my_routine);
         listView = (ListView) findViewById(R.id.list_view);
         String Faculty[] = {"CE", "CS"};
         String Semester[] = {"1", "2", "3", "4", "5", "6", "7", "8"};
@@ -96,6 +98,15 @@ public class MainActivity extends AppCompatActivity {
         question=(Button)findViewById(R.id.button_question);
         profile=(Button)findViewById(R.id.button_profile);
         getmysubject=(Button)findViewById(R.id.button_seemysubject);
+        getmyroutine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Routineviewer2.class);
+                intent.putExtra("get_faculty", "myfaculty");
+                intent.putExtra("get_semester", "mysemester");
+                startActivity(intent);
+            }
+        });
 
 
         getmysubject.setOnClickListener(new View.OnClickListener() {
