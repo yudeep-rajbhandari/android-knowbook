@@ -13,7 +13,7 @@
         android:id="@+id/textView"
         android:textStyle="bold"
         android:textColor="#000"
-        />
+         />
 
 
 
@@ -36,7 +36,9 @@
         android:textSize="14sp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
-        android:id="@+id/textView_bookname" />
+        android:id="@+id/textView_bookname"
+
+     />
 
     <TextView
         android:text="Book type:"
@@ -55,7 +57,9 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginLeft="5dp"
-        android:id="@+id/textview_booktype_edit" />
+        android:id="@+id/textview_booktype_edit"
+
+        />
 
     <TextView
         android:text="Authors:"
@@ -72,7 +76,9 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginLeft="5dp"
-        android:id="@+id/textview_author" />
+        android:id="@+id/textview_author"
+
+        />
 
     <TextView
         android:text="Publications:"
@@ -89,7 +95,8 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginLeft="5dp"
-        android:id="@+id/textview_publication" />
+        android:id="@+id/textview_publication"
+/>
 
     <TextView
         android:text="Price:"
@@ -106,7 +113,9 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginLeft="5dp"
-        android:id="@+id/textview_price" />
+        android:id="@+id/textview_price"
+
+       />
 
     <TextView
         android:text="Library Details"

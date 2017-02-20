@@ -2,6 +2,8 @@ package com.example.user.volleyjson;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,6 +38,13 @@ public class notes extends AppCompatActivity {
         String get_faculty = getIntent().getStringExtra("get_faculty");
         String get_semester = getIntent().getStringExtra("get_semester");
         final ArrayList<String> mArrayList = new ArrayList<String>();
+
+
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         listView=(ListView)findViewById(R.id.listview_notes);
 
@@ -167,5 +176,16 @@ spinner.setAdapter(dataAdapter);
         // System.out.println(mArrayList);
         MySingleton.getInstance(notes.this).addToRequestQueue(jsonObjectRequest);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

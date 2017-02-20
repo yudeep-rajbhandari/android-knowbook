@@ -3,6 +3,8 @@ package com.example.user.volleyjson;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -49,6 +51,11 @@ EditText name;
         view=(Button)findViewById(R.id.view);
         view1=(TextView)findViewById(R.id.textView14);
 
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ArrayAdapter<String> spinnerArrayAdapter_faculty = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Faculty);
         spinnerArrayAdapter_faculty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner_profile_faculty.setAdapter(spinnerArrayAdapter_faculty);
@@ -79,7 +86,7 @@ EditText name;
                 if(isInserted==true){
 
                     Toast.makeText(profile.this,"data inserted successfully",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(profile.this, MainActivity.class);
+                    Intent intent = new Intent(profile.this, homeactivity.class);
 
                     startActivity(intent);
                 }
@@ -351,5 +358,13 @@ EditText name;
         });
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -3,6 +3,8 @@ package com.example.user.volleyjson;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,6 +25,11 @@ public class see_my_books extends AppCompatActivity {
         bookAdapter = new BookAdapter(this, R.layout.textlayout2);
 
         listView.setAdapter(bookAdapter);
+
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -75,5 +82,14 @@ public class see_my_books extends AppCompatActivity {
             System.out.println("<<<<<<<<<<<<<<<<hereererer");
             bookAdapter.add(bookdisplay);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

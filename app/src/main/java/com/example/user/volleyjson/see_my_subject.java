@@ -3,6 +3,8 @@ package com.example.user.volleyjson;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -20,6 +22,12 @@ public class see_my_subject extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.see_my_subejct);
 
         subjectAdapter = new SubjectAdapter(this, R.layout.textlayout);
+
+
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         listView.setAdapter(subjectAdapter);
@@ -53,5 +61,14 @@ public class see_my_subject extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            onBackPressed();
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

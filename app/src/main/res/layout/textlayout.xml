@@ -44,7 +44,7 @@
     />
 
     <Button
-        android:text="download syllabus"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_syllabus"
@@ -52,6 +52,7 @@
         android:layout_marginStart="22dp"
         android:layout_marginTop="11dp"
         android:focusable="false"
+        android:text="Download Syllabus"
         android:background="@drawable/drawable"
         android:layout_below="@+id/subjectname"
         android:layout_toRightOf="@+id/subjectcode"

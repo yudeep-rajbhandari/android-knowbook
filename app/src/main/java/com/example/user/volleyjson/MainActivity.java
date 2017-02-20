@@ -98,28 +98,10 @@ public class MainActivity extends AppCompatActivity {
         question=(Button)findViewById(R.id.button_question);
         profile=(Button)findViewById(R.id.button_profile);
         getmysubject=(Button)findViewById(R.id.button_seemysubject);
-        getmyroutine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Routineviewer2.class);
-                intent.putExtra("get_faculty", "myfaculty");
-                intent.putExtra("get_semester", "mysemester");
-                startActivity(intent);
-            }
-        });
 
 
-        getmysubject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, see_my_subject.class);
 
 
-                startActivity(intent);
-
-               // listView = (ListView) findViewById(R.id.list_view);
-                           }
-        });
 
 
      question.setOnClickListener(new View.OnClickListener() {
@@ -139,15 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, profile.class);
 
-               ;
-                startActivity(intent);
-            }
-        });
 
         ArrayAdapter<String> spinnerArrayAdapter_faculty = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Faculty);
         spinnerArrayAdapter_faculty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view

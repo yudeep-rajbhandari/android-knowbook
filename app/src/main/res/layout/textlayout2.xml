@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-<TextView
-    android:text="Book Name:"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="20dp"
-    android:id="@+id/bookname"/>
+
     <TextView
         android:text="bookname1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-android:textSize="20dp"
+        android:textSize="20dp"
         android:id="@+id/bookname1"
-        android:layout_toRightOf="@+id/bookname"
+
         />
 
     <Button
-        android:text="download pdf"
+        android:text="Pdf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/download_pdf"
-        android:layout_below="@+id/bookname"
+        android:layout_below="@+id/bookname1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:focusable="false"
-        android:layout_marginTop="47dp" />
+        />
 
 
 </RelativeLayout>

@@ -11,7 +11,6 @@
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
 
 
         tools:context="com.example.user.volleyjson.MainActivity"
@@ -32,7 +31,9 @@
             android:layout_below="@+id/textView11"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="40dp"
-            android:background="@android:drawable/btn_dropdown" />
+            android:background="@android:drawable/btn_dropdown"
+
+            />
 
 
         <TextView
@@ -44,6 +45,8 @@
             android:layout_marginTop="25dp"
             android:layout_below="@+id/app_bar"
             android:text="Semester"
+
+            android:textColor="@color/text"
             android:textSize="20dp"
             android:layout_marginLeft="100dp" />
 
@@ -66,6 +69,7 @@
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:elevation="0dp"
+            android:textColor="@color/text"
             android:text="Department"
             android:textSize="20dp"
             android:layout_marginTop="25dp"
@@ -75,11 +79,15 @@
 
         <Button
             android:id="@+id/button_note"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="165dp"
+            android:layout_height="120dp"
             android:background="@drawable/notes_final1"
-            android:layout_marginTop="400dp"
-            android:layout_marginLeft="20dp"
+
+
+            android:layout_below="@+id/button_subject"
+
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
 
 
 
@@ -87,11 +95,11 @@
 
         <Button
             android:id="@+id/button_subject"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="165dp"
+            android:layout_height="120dp"
             android:layout_below="@+id/spinner"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
 
 
             android:background="@drawable/subjects_final"
@@ -100,51 +108,28 @@
              />
         <Button
             android:id="@+id/button_routine"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="170dp"
+            android:layout_height="120dp"
             android:background="@drawable/routine_final1"
             android:layout_below="@+id/spinner2"
+            android:layout_toRightOf="@id/button_subject"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="210dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
 
             />
 
         <Button
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="170dp"
+            android:layout_height="120dp"
             android:background="@drawable/question_final"
-            android:layout_marginTop="400dp"
-            android:layout_marginLeft="210dp"
+
+            android:layout_toRightOf="@id/button_note"
+            android:layout_below="@id/button_routine"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/button_question" />
-
-        <Button
-            android:text="Profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button_note"
-            android:layout_alignRight="@+id/button_note"
-            android:layout_alignEnd="@+id/button_note"
-            android:layout_marginRight="24dp"
-            android:layout_marginEnd="24dp"
-            android:id="@+id/button_profile" />
-
-        <Button
-            android:text="mysubject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button_question"
-            android:layout_alignLeft="@+id/textView11"
-            android:layout_alignStart="@+id/textView11"
-            android:id="@+id/button_seemysubject" />
-
-        <Button
-            android:text="Myroutine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/textView11"
-            android:layout_toStartOf="@+id/textView11"
-            android:id="@+id/see_my_routine"
-            android:layout_below="@+id/button_subject" />
 
 
     </RelativeLayout>
