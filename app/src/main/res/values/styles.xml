@@ -23,4 +23,22 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+
+    <style name="ButtonNormalText" parent="@android:style/Widget.Button">
+        <item name="android:textColor" >#000</item>
+        <item name="android:textSize" >12dip</item>
+        <item name="android:textStyle" >bold</item>
+        <item name="android:height" >44dip</item>
+
+<!--        <item name="android:background" >@drawable/button_selector</item>-->
+        <item name="android:focusable" >true</item>
+        <item name="android:clickable" >true</item>
+    </style>
+
+    <style name="ButtonNormalTextWithIcon" parent="ButtonNormalText">
+        <item name="android:drawableBottom" >@drawable/book</item>
+        
+    </style>
+
 </resources>

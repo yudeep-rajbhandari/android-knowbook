@@ -34,8 +34,14 @@
         <activity android:name=".Routineviewer2" />
         <activity android:name=".profile" />
         <activity android:name=".notes" />
-        <activity android:name=".see_my_subject" />
+        <activity android:name=".see_my_subject"
+            android:label="My subjects"
+            />
+
         <activity android:name=".see_my_books"></activity>
+        <activity android:name=".homeactivity"></activity>
+
+
     </application>
 
 </manifest>
