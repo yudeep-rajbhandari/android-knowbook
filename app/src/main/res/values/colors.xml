@@ -38,4 +38,7 @@
 
     <color name="orange">#FFD180</color>
 
+    <color name="background">#20d2bb</color>
+    <color name="text">#000</color>
+
 </resources>
