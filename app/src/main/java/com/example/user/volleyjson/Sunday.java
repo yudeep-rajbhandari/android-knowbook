@@ -86,6 +86,8 @@ else {
                         JSONArray jsonObject = response.getJSONArray("data");
 
 
+
+
                         for (int i = 0; i < jsonObject.length(); i++) {
                             System.out.println("<<<<<<<<<<<<<<<<<<<");
                             JSONObject object1 = jsonObject.getJSONObject(i);
@@ -141,6 +143,8 @@ else {
                             System.out.println("<<<<<<<<<<<<<<<<<<<from");
                             if ((get_faculty.equals(faculty)) && (get_semester.equals(semester)) && (day.equals("Sunday"))) {
                                 System.out.println("<<<<<getjherer");
+
+
                                 Routinedisplay routinedisplay = new Routinedisplay(faculty, semester, subjectname, subjectcode, day, date1, date3, teacher);
                                 System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<12312123");
                                 System.out.println(routinedisplay);

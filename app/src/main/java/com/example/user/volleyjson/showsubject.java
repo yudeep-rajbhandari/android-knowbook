@@ -97,13 +97,7 @@ public class showsubject extends AppCompatActivity {
                                 JSONObject picture = object1.getJSONObject("picture");
 
                                 String syllabus = picture.getString("url");
-                                DatabaseHelper mydb = new DatabaseHelper(getApplicationContext());
 
-                                mydb.insertsubject(subjectid, subjectname, subjectcode, credit, syllabus, get_faculty, get_semester);
-                                ArrayList<DatabaseHelper.Subject> subList=mydb.getSubjects();
-                                for(DatabaseHelper.Subject subject:subList){
-                                    subject.printSubject();
-                                }
                                 System.out.println("<<<<<<<<<<<<<<<<<<<");
                                 System.out.println(subjectid);
                                 System.out.print(subjectcode);

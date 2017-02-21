@@ -36,6 +36,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Rout_7 = "subjectcode";
 
 
+    public static final String TABLE_NAME5 = "Notes";
+    public static final String NOTE_1 = "ID";
+    public static final String NOTE_2 = "subject_name";
+    public static final String NOTE_3 = "subject_code";
+    public static final String NOTE_4 = "topic";
+    public static final String NOTE_5 = "link";
+
+    public static final String TABLE_NAME6 = "Questions";
+    public static final String que_1 = "ID";
+    public static final String que_2 = "subject_name";
+    public static final String que_3 = "subject_code";
+    public static final String que_4 = "types";
+    public static final String que_5 = "year";
+    public static final String que_6 = "link";
+
+
 
 
 
@@ -121,6 +137,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+    public class Notes{
+        String ID,subject_name,subject_code,topic,link;
+        public  Notes(String ID,String subject_name, String subject_code, String topic, String link
+        ){
+            this.ID=ID;
+            this.subject_code=subject_code;
+            this.subject_name=subject_name;
+            this.topic=topic;
+
+            this.link=link;
+
+        }
+        public  Notes(){
+
+        }
+
+
+    }
+
+
+    public class Questions{
+        String ID,subject_name,subject_code,types,year,link;
+        public  Questions(String ID,String subject_name, String subject_code, String types,String year, String link
+        ){
+            this.ID=ID;
+            this.subject_code=subject_code;
+            this.subject_name=subject_name;
+            this.types=types;
+            this.year=year;
+
+            this.link=link;
+
+        }
+        public  Questions(){
+
+        }
+
+
+    }
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -130,12 +186,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME1 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,Name TEXT,Faculty TEXT,Semester INTEGER)");
         sqLiteDatabase.execSQL("create table " + TABLE_NAME2 + " (ID INTEGER,subject_name TEXT,subject_code TEXT,credit TEXT,syllabus TEXT,faculty TEXT,semester INTEGER)");
         sqLiteDatabase.execSQL("create table " + TABLE_NAME3 + " (ID INTEGER,book_name TEXT,writer TEXT,booktype TEXT,price TEXT,availabiltiy TEXT,publication TEXT,racknumber TEXT,pdf TEXT,subjectid TEXT)");
         sqLiteDatabase.execSQL("create table " + TABLE_NAME4 + " (ID INTEGER,day TEXT,starting_time TEXT,ending_time TEXT,teacher TEXT,subjectname TEXT,subjectcode TEXT)");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME5 + " (ID INTEGER,subject_name TEXT,subject_code TEXT,topic TEXT,link TEXT)");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME6 + " (ID INTEGER,subject_name TEXT,subject_code TEXT,types TEXT,year TEXT,link TEXT)");
 
     }
 
@@ -145,6 +204,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME2);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME3);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME4);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME5);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME6);
 
         onCreate(sqLiteDatabase);
 
@@ -183,6 +244,15 @@ public void clear(){
     public void clear2(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.delete(TABLE_NAME4,null,null);
+    }
+
+    public void clear4(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(TABLE_NAME5,null,null);
+    }
+    public void clear5(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(TABLE_NAME6,null,null);
     }
     public boolean insertsubject(String ID, String subject_name, String subject_code, String credit, String syllabus, String faculty, String semester) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -232,6 +302,47 @@ public void clear(){
     }
 
 
+    public boolean insertnotes(String ID, String subject_name, String subject_code, String topic, String link) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NOTE_1, ID);
+        contentValues.put(NOTE_2, subject_name);
+        contentValues.put(NOTE_3, subject_code);
+        contentValues.put(NOTE_4, topic);
+        contentValues.put(NOTE_5, link);
+
+
+        long result = sqLiteDatabase.insert(TABLE_NAME5, null, contentValues);
+
+        if (result == -1) {
+            return false;
+        } else
+            return true;
+    }
+
+    public boolean insertquestions(String ID, String subject_name, String subject_code, String types,String year, String link) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(que_1, ID);
+        contentValues.put(que_2, subject_name);
+        contentValues.put(que_3, subject_code);
+        contentValues.put(que_4, types);
+        contentValues.put(que_5,year);
+        contentValues.put(que_6, link);
+
+
+        long result = sqLiteDatabase.insert(TABLE_NAME6, null, contentValues);
+
+        if (result == -1) {
+            return false;
+        } else
+            return true;
+    }
+
     public boolean insertroutine(String ID, String day, String starting_time, String ending_time, String teacher, String subjectname, String subjectcode) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
@@ -272,6 +383,87 @@ public void clear(){
            );
         }
         return  routinelist;
+    }
+
+    public ArrayList<Notes> getNotes(){
+        ArrayList<Notes> Noteslist=new ArrayList<>();
+        SQLiteDatabase database=this.getReadableDatabase();
+        String Query ="SELECT * FROM "+TABLE_NAME5 ;
+        System.out.println(Query);
+        Cursor cursor=database.rawQuery(Query,null);
+        while(cursor.moveToNext()){
+            Noteslist.add(
+                    new Notes(cursor.getString(0),
+                            cursor.getString(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4)
+
+                    )
+            );
+        }
+        return Noteslist ;
+    }
+
+    public ArrayList<Questions> getQuestions(){
+        ArrayList<Questions> quelist=new ArrayList<>();
+        SQLiteDatabase database=this.getReadableDatabase();
+        String Query ="SELECT * FROM "+TABLE_NAME6 ;
+        System.out.println(Query);
+        Cursor cursor=database.rawQuery(Query,null);
+        while(cursor.moveToNext()){
+            quelist.add(
+                    new Questions(cursor.getString(0),
+                            cursor.getString(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5)
+
+                    )
+            );
+        }
+        return quelist ;
+    }
+
+    public ArrayList<Notes> getNotes1(String sub){
+        ArrayList<Notes> Noteslist=new ArrayList<>();
+        SQLiteDatabase database=this.getReadableDatabase();
+        String Query ="SELECT * FROM "+TABLE_NAME5+ " WHERE subject_code = '"+sub+"'" ;
+        System.out.println(Query);
+        Cursor cursor=database.rawQuery(Query,null);
+        while(cursor.moveToNext()){
+            Noteslist.add(
+                    new Notes(cursor.getString(cursor.getColumnIndex(NOTE_1)),
+                            cursor.getString(cursor.getColumnIndex(NOTE_2)),
+                            cursor.getString(cursor.getColumnIndex(NOTE_3)),
+                            cursor.getString(cursor.getColumnIndex(NOTE_4)),
+                            cursor.getString(cursor.getColumnIndex(NOTE_5))
+
+                    )
+            );
+        }
+        return Noteslist ;
+    }
+    public ArrayList<Questions> getQuestion1(String sub){
+        ArrayList<Questions> quelist=new ArrayList<>();
+        SQLiteDatabase database=this.getReadableDatabase();
+        String Query ="SELECT * FROM "+TABLE_NAME6+ " WHERE subject_code = '"+sub+"'" ;
+        System.out.println(Query);
+        Cursor cursor=database.rawQuery(Query,null);
+        while(cursor.moveToNext()){
+            quelist.add(
+                    new Questions(cursor.getString(cursor.getColumnIndex(que_1)),
+                            cursor.getString(cursor.getColumnIndex(que_2)),
+                            cursor.getString(cursor.getColumnIndex(que_3)),
+                            cursor.getString(cursor.getColumnIndex(que_4)),
+                            cursor.getString(cursor.getColumnIndex(que_5)),
+                            cursor.getString(cursor.getColumnIndex(que_6))
+
+                    )
+            );
+        }
+        return quelist ;
     }
 
     public ArrayList<Subject> getSubjects(){

@@ -85,7 +85,7 @@ EditText name;
 
                 if(isInserted==true){
 
-                    Toast.makeText(profile.this,"data inserted successfully",Toast.LENGTH_LONG).show();
+                    Toast.makeText(profile.this,"data inserted successfully wait for a while while we fetch your data",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(profile.this, homeactivity.class);
 
                     startActivity(intent);
@@ -95,10 +95,164 @@ EditText name;
                     System.out.println(getprofile.getFaculty());
                 }
 
+
+
+
                 String url = "http://knowbook.herokuapp.com/subject/getsubject/?Faculty=" +spinner_profile_faculty.getSelectedItem().toString() + "&Semester=" +Spinner_profile_semester.getSelectedItem().toString();
                 String bookurl = "http://knowbook.herokuapp.com/books/Request2";
 
                 String routineurl = "http://knowbook.herokuapp.com/routine/getroutine/";
+
+                String notesurl = "http://knowbook.herokuapp.com/notes/getnotes/";
+
+                String queurl = "http://knowbook.herokuapp.com/pastquestion/getquestion/";
+
+
+                JsonObjectRequest jsonObjectRequest6 = new JsonObjectRequest(Request.Method.GET, queurl, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                try {
+                                    System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                    JSONArray jsonObject = response.getJSONArray("data");
+                                    DatabaseHelper.Notes notes=mydb.new Notes();
+                                    if(notes!=null){
+                                        mydb.clear5();
+                                    }
+                                    for (int i = 0; i < jsonObject.length(); i++) {
+                                        System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        JSONObject object1 = jsonObject.getJSONObject(i);
+
+
+                                        String id=object1.getString("_id");
+                                        String year = object1.getString("Year");
+                                        String types = object1.getString("Types");
+
+                                        JSONObject picture=object1.getJSONObject("pdf");
+                                        String pdf=picture.getString("url");
+                                        JSONObject picture1 = object1.getJSONObject("Subjectid");
+                                        String subjectname = picture1.getString("SubjectName");
+                                        String subjectcode = picture1.getString("subjectcode");
+                                        String faculty = picture1.getString("Faculties");
+                                        String semester = picture1.getString("Semester");
+
+
+                                        System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        System.out.print(year);
+                                        System.out.println(pdf);
+
+                                        if(faculty.equals(spinner_profile_faculty.getSelectedItem().toString()) && semester.equals(Spinner_profile_semester.getSelectedItem().toString())) {
+                                            mydb.insertquestions(id, subjectname, subjectcode, types,year, pdf);
+
+
+                                            System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                            System.out.println(id);
+                                            System.out.print(subjectcode);
+                                            System.out.print(subjectname);
+
+                                            System.out.println(pdf);
+                                            System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        }
+
+
+//                                        mArrayList.add(subjectcode);
+//                                        hmLang.put(subjectcode,subjectid);
+//                                        dataAdapter.notifyDataSetChanged();
+                                    }
+//                            System.out.println(mArrayList);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+                        Toast.makeText(profile.this, "something went wrong", Toast.LENGTH_LONG).show();
+
+                    }
+
+                });
+                // System.out.println(mArrayList);
+                MySingleton.getInstance(profile.this).addToRequestQueue(jsonObjectRequest6);
+
+
+
+                JsonObjectRequest jsonObjectRequest5 = new JsonObjectRequest(Request.Method.GET, notesurl, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                try {
+                                    System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                    JSONArray jsonObject = response.getJSONArray("data");
+                                    DatabaseHelper.Notes notes=mydb.new Notes();
+                                    if(notes!=null){
+                                        mydb.clear4();
+                                    }
+                                    for (int i = 0; i < jsonObject.length(); i++) {
+                                        System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        JSONObject object1 = jsonObject.getJSONObject(i);
+
+
+                                        String id=object1.getString("_id");
+                                        String topic = object1.getString("NoteTopic");
+                                        JSONObject picture=object1.getJSONObject("pdf");
+                                        String pdf=picture.getString("url");
+                                        JSONObject picture1 = object1.getJSONObject("Subjectid");
+                                        String subjectname = picture1.getString("SubjectName");
+                                        String subjectcode = picture1.getString("subjectcode");
+                                        String faculty = picture1.getString("Faculties");
+                                        String semester = picture1.getString("Semester");
+
+
+                                        System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        System.out.print(topic);
+                                        System.out.println(pdf);
+
+                                        if(faculty.equals(spinner_profile_faculty.getSelectedItem().toString()) && semester.equals(Spinner_profile_semester.getSelectedItem().toString())) {
+                                            mydb.insertnotes(id, subjectname, subjectcode, topic, pdf);
+
+
+                                            System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                            System.out.println(id);
+                                            System.out.print(subjectcode);
+                                            System.out.print(subjectname);
+
+                                            System.out.println(pdf);
+                                            System.out.println("<<<<<<<<<<<<<<<<<<<");
+                                        }
+
+
+//                                        mArrayList.add(subjectcode);
+//                                        hmLang.put(subjectcode,subjectid);
+//                                        dataAdapter.notifyDataSetChanged();
+                                    }
+//                            System.out.println(mArrayList);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+                        Toast.makeText(profile.this, "something went wrong", Toast.LENGTH_LONG).show();
+
+                    }
+
+                });
+                // System.out.println(mArrayList);
+                MySingleton.getInstance(profile.this).addToRequestQueue(jsonObjectRequest5);
+
+
                 JsonObjectRequest jsonObjectRequest2 = new JsonObjectRequest(Request.Method.GET, routineurl, null,
                         new Response.Listener<JSONObject>() {
                             @Override

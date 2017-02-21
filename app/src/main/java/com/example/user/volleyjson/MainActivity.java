@@ -107,7 +107,12 @@ public class MainActivity extends AppCompatActivity {
      question.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-             Toast.makeText(MainActivity.this,"not loaded",Toast.LENGTH_LONG).show();
+
+             Intent intent = new Intent(MainActivity.this, question.class);
+             intent.putExtra("get_faculty", spinner_faculty.getSelectedItem().toString());
+             intent.putExtra("get_semester", spinner_semester.getSelectedItem().toString());
+             startActivity(intent);
+
          }
      });
 

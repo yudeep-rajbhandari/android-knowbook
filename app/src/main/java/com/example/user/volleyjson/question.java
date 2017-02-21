@@ -3,7 +3,6 @@ package com.example.user.volleyjson;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,48 +22,46 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class notes extends AppCompatActivity {
+public class question extends AppCompatActivity {
     Spinner spinner;
     HashMap<String ,String> hmLang = new HashMap<String,String>();
     ListView listView;
-    NotesAdapter notesAdapter;
+   QuestionAdapter questionAdapter;
     notesgetter getnotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notes);
-        spinner=(Spinner)findViewById(R.id.spinner_notes);
+        setContentView(R.layout.activity_question);
+
+        spinner=(Spinner)findViewById(R.id.spinner_question);
         String get_faculty = getIntent().getStringExtra("get_faculty");
         String get_semester = getIntent().getStringExtra("get_semester");
         final ArrayList<String> mArrayList = new ArrayList<String>();
 
 
-        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        listView=(ListView)findViewById(R.id.listview_notes);
+
+        listView=(ListView)findViewById(R.id.listview_question);
 
         final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, mArrayList);
-spinner.setAdapter(dataAdapter);
+        spinner.setAdapter(dataAdapter);
         if(get_faculty.equals("myfaculty") && get_semester.equals("mysemester")){
             DatabaseHelper db=new DatabaseHelper(getApplicationContext());
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    notesAdapter = new NotesAdapter(notes.this, R.layout.textlayout_notes);
-                    listView.setAdapter(notesAdapter);
+                    questionAdapter = new QuestionAdapter(question.this, R.layout.textlayout_question);
+                    listView.setAdapter(questionAdapter);
                     String reqsubjectcode=spinner.getSelectedItem().toString();
                     DatabaseHelper db=new DatabaseHelper(getApplicationContext());
-                    ArrayList<DatabaseHelper.Notes> notelist=db.getNotes1(reqsubjectcode);
-                    for(DatabaseHelper.Notes notes:notelist){
+                    ArrayList<DatabaseHelper.Questions> quelist=db.getQuestion1(reqsubjectcode);
+                    for(DatabaseHelper.Questions questions:quelist){
 
-                        getnotes = new notesgetter(notes.topic, notes.link);
+                        questiongetter getque = new questiongetter(questions.types, questions.year,questions.link);
 
-                        notesAdapter.add(getnotes);
+                        questionAdapter.add(getque);
                     }
 
                 }
@@ -76,15 +73,15 @@ spinner.setAdapter(dataAdapter);
                 }
             });
 
-            ArrayList<DatabaseHelper.Notes> notelist=db.getNotes();
-            for(DatabaseHelper.Notes notes:notelist){
+            ArrayList<DatabaseHelper.Questions> quelist=db.getQuestions();
+            for(DatabaseHelper.Questions questions:quelist){
                 //subject.printSubject();
-              //  Routinedisplay routinedisplay = new Routinedisplay(notes.ID, notes.subject_name,notes.subject_code, notes.topic, notes.link);
-                if (mArrayList.contains(notes.subject_code)) {
+                //  Routinedisplay routinedisplay = new Routinedisplay(notes.ID, notes.subject_name,notes.subject_code, notes.topic, notes.link);
+                if (mArrayList.contains(questions.subject_code)) {
                     System.out.println("<<<<<<<<<");
                 } else {
-                    mArrayList.add(notes.subject_code);
-                   // hmLang.put(subjectcode, subjectid);
+                    mArrayList.add(questions.subject_code);
+                    // hmLang.put(subjectcode, subjectid);
                     dataAdapter.notifyDataSetChanged();
                 }
             }
@@ -92,17 +89,17 @@ spinner.setAdapter(dataAdapter);
         else {
 
 
-            String url = "http://knowbook.herokuapp.com/notes/Requestsubject/?Faculty=" + get_faculty + "&Semester=" + get_semester;
+            String url = "http://knowbook.herokuapp.com/pastquestion/Requestsubject/?Faculty=" + get_faculty + "&Semester=" + get_semester;
             //String notesurl = "http://knowbook.herokuapp.com/notes/Requests/"+key;
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     String itemsel = adapterView.getItemAtPosition(i).toString();
-                    notesAdapter = new NotesAdapter(notes.this, R.layout.textlayout_notes);
-                    listView.setAdapter(notesAdapter);
+                    questionAdapter = new QuestionAdapter(question.this, R.layout.textlayout_question);
+                    listView.setAdapter(questionAdapter);
 
                     String key = hmLang.get(itemsel);
-                    String notesurl = "http://knowbook.herokuapp.com/notes/Requests/" + key;
+                    String notesurl = "http://knowbook.herokuapp.com/pastquestion/Requests/" + key;
 
 
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, notesurl, null,
@@ -117,17 +114,21 @@ spinner.setAdapter(dataAdapter);
                                             System.out.println("<<<<<<<<<<<<<<<<<<<");
                                             JSONObject object1 = jsonObject.getJSONObject(i);
 
-                                            String topic = object1.getString("NoteTopic");
+                                            String years = object1.getString("Year");
+                                            String types = object1.getString("Types");
+
+
+
                                             JSONObject picture = object1.getJSONObject("pdf");
                                             String pdf = picture.getString("url");
 
 
                                             System.out.println("<<<<<<<<<<<<<<<<<<<");
-                                            System.out.print(topic);
+                                            System.out.print(years);
                                             System.out.println(pdf);
-                                            getnotes = new notesgetter(topic, pdf);
+                                           questiongetter getquestion = new questiongetter(types,years,pdf);
 
-                                            notesAdapter.add(getnotes);
+                                            questionAdapter.add(getquestion);
 
 
 //                                        mArrayList.add(subjectcode);
@@ -146,23 +147,23 @@ spinner.setAdapter(dataAdapter);
                         public void onErrorResponse(VolleyError error) {
 
 
-                            Toast.makeText(notes.this, "something went wrong", Toast.LENGTH_LONG).show();
+                            Toast.makeText(question.this, "something went wrong", Toast.LENGTH_LONG).show();
 
                         }
 
                     });
                     // System.out.println(mArrayList);
-                    MySingleton.getInstance(notes.this).addToRequestQueue(jsonObjectRequest);
+                    MySingleton.getInstance(question.this).addToRequestQueue(jsonObjectRequest);
 
 
-                    Toast.makeText(notes.this, key, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(question.this, key, Toast.LENGTH_SHORT).show();
 
 
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
-                    Toast.makeText(notes.this, "select somthing", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(question.this, "select somthing", Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -212,25 +213,14 @@ spinner.setAdapter(dataAdapter);
                 public void onErrorResponse(VolleyError error) {
 
 
-                    Toast.makeText(notes.this, "something went wrong", Toast.LENGTH_LONG).show();
+                    Toast.makeText(question.this, "something went wrong", Toast.LENGTH_LONG).show();
 
                 }
 
             });
             // System.out.println(mArrayList);
-            MySingleton.getInstance(notes.this).addToRequestQueue(jsonObjectRequest);
+            MySingleton.getInstance(question.this).addToRequestQueue(jsonObjectRequest);
         }
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            onBackPressed();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

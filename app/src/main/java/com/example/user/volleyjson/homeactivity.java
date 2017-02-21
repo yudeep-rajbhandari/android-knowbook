@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 /**
  * Created by ashchal on 2/20/17.
  */
@@ -34,6 +36,10 @@ public class homeactivity  extends AppCompatActivity{
         getmysubject = (Button) findViewById(R.id.button_seemysubject);
         getmyroutine =  (Button) findViewById(R.id.see_my_routine);
         exploreall = (Button) findViewById(R.id.explore);
+        question=(Button)findViewById(R.id.button_myquestion);
+
+//        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<");
+//        System.out.println(day);
 
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -66,9 +72,26 @@ public class homeactivity  extends AppCompatActivity{
         notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(homeactivity.this,"not loaded",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(homeactivity.this,notes.class);
+                intent.putExtra("get_faculty", "myfaculty");
+                intent.putExtra("get_semester", "mysemester");
+
+                startActivity(intent);
+
             }
         });
+        question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(homeactivity.this,question.class);
+                intent.putExtra("get_faculty", "myfaculty");
+                intent.putExtra("get_semester", "mysemester");
+
+                startActivity(intent);
+
+            }
+        });
+
 
         exploreall.setOnClickListener(new View.OnClickListener() {
             @Override

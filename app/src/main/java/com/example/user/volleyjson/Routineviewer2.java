@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -50,6 +51,8 @@ public class Routineviewer2 extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+
+
         final String get_faculty = getIntent().getStringExtra("get_faculty");
         final String get_semester = getIntent().getStringExtra("get_semester");
         Toast.makeText(Routineviewer2.this, get_faculty, Toast.LENGTH_LONG).show();
@@ -61,8 +64,21 @@ public class Routineviewer2 extends AppCompatActivity{
         ViewPager viewPager=(ViewPager)findViewById(R.id.view_pager);
         viewPager.setAdapter(new TabAdapter(getSupportFragmentManager(),routineAdapter,this));
 
+Calendar calendar=Calendar.getInstance();
+        int day=calendar.get(Calendar.DAY_OF_WEEK);
+
+        if(day==7){
+            viewPager.setCurrentItem(0);
+        }
+        else{
+            viewPager.setCurrentItem(day-1);
+        }
+
+
         tabLayout= (TabLayout) findViewById(R.id.tab1);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getSelectedTabPosition();
+
 
 
 

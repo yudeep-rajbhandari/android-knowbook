@@ -68,6 +68,18 @@
             android:layout_alignParentEnd="true"
             android:id="@+id/explore"/>
 
+        <Button
+            android:text="my question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="73dp"
+            android:id="@+id/button_myquestion" />
+
 
     </RelativeLayout>
 

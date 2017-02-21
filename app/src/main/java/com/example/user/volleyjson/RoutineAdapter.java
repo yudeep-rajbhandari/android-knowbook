@@ -69,11 +69,23 @@ public class RoutineAdapter extends ArrayAdapter {
         }
        final Routinedisplay routinedisplay=(Routinedisplay)this.getItem(position);
 
-       routineshow.startingtime.setText(routinedisplay.getStartingtime());
-        routineshow.endingtime.setText(routinedisplay.getEndingtime());
-        routineshow.subjectcode.setText(routinedisplay.getSubjectcode());
-        routineshow.subjectname.setText(routinedisplay.getSubjectname());
-        routineshow.teacher.setText(routinedisplay.getTeacher());
+
+        if(routinedisplay==null){
+            routineshow.startingtime.setText("");
+            routineshow.endingtime.setText("");
+            routineshow.subjectcode.setText("");
+            routineshow.subjectname.setText("");
+            routineshow.teacher.setText("");
+
+
+        }
+            else {
+            routineshow.startingtime.setText(routinedisplay.getStartingtime());
+            routineshow.endingtime.setText(routinedisplay.getEndingtime());
+            routineshow.subjectcode.setText(routinedisplay.getSubjectcode());
+            routineshow.subjectname.setText(routinedisplay.getSubjectname());
+            routineshow.teacher.setText(routinedisplay.getTeacher());
+        }
 
         //bookshow.bookpdf.setText(bookdisplay.getPdf());
 
