@@ -31,15 +31,25 @@
             </intent-filter>
         </activity>
         <activity android:name=".Routineviewer" />
-        <activity android:name=".Routineviewer2" />
-        <activity android:name=".profile" />
-        <activity android:name=".notes" />
+        <activity android:name=".Routineviewer2"
+            android:label="Routine"
+            />
+        <activity android:name=".profile"
+            android:label="Setup Profile"
+            />
+        <activity android:name=".notes"
+            android:label="Notes"/>
         <activity
             android:name=".see_my_subject"
             android:label="My subjects" />
-        <activity android:name=".see_my_books" />
-        <activity android:name=".homeactivity" />
-        <activity android:name=".question"></activity>
+        <activity android:name=".see_my_books"
+            android:label="My Booklist"/>
+        <activity android:name=".homeactivity"
+            android:label="Home"
+            />
+        <activity android:name=".question"
+            android:label="Past Questions"
+            ></activity>
     </application>
 
 </manifest>

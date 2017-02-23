@@ -1,101 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
-    <TextView
-        android:text="startintime"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/routinelist"
+    android:layout_marginBottom="10dp"
+    >
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_height="100dp"
+        android:id="@+id/time"
+        android:background="@drawable/routinetime"
 
-        android:id="@+id/textView_startingtime" />
+        >
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
 
-    <TextView
-        android:text="-"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView_startingtime"
-        android:layout_toRightOf="@+id/textView_startingtime"
-        android:layout_toEndOf="@+id/textView_startingtime"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:id="@+id/textView10" />
+            android:id="@+id/textView_startingtime" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView10"
-        android:layout_toRightOf="@+id/textView10"
-        android:layout_toEndOf="@+id/textView10"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:id="@+id/textView_endingtime"
-        android:text="endingtime" />
 
-    <TextView
-        android:text=":"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView_endingtime"
-        android:layout_toRightOf="@+id/textView_endingtime"
-        android:layout_toEndOf="@+id/textView_endingtime"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:id="@+id/textView13" />
+        <TextView
+            android:text="-"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView_startingtime"
+            android:layout_toRightOf="@+id/textView_startingtime"
+            android:layout_toEndOf="@+id/textView_startingtime"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/textView10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView10"
+            android:layout_toRightOf="@+id/textView10"
+            android:layout_toEndOf="@+id/textView10"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/textView_endingtime"
+            android:text="endingtime" />
+
+
+    </RelativeLayout>
+
 
     <TextView
         android:text="Subj101"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView13"
-        android:layout_toRightOf="@+id/textView13"
-        android:layout_toEndOf="@+id/textView13"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:id="@+id/textView_subjectcode" />
+        android:layout_height="70dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="4dp"
+        android:layout_toRightOf="@+id/time"
+
+
+        android:background="@drawable/routinecode"
+        android:id="@+id/textView_subjectcode"
+
+
+        android:layout_alignParentTop="true" />
+
 
     <TextView
-        android:text=","
+        android:text="subject name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView_subjectcode"
+        android:layout_height="70dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="5dp"
+        android:id="@+id/textView_subjectname"
+        android:background="@drawable/routinename"
+        android:layout_alignBottom="@+id/textView_subjectcode"
         android:layout_toRightOf="@+id/textView_subjectcode"
-        android:layout_toEndOf="@+id/textView_subjectcode"
-        android:id="@+id/textView15" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
+
+
+
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
         android:id="@+id/textView_teachername"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="38dp"
-        android:layout_below="@+id/textView10"
-        android:layout_alignLeft="@+id/textView10"
-        android:layout_alignStart="@+id/textView10" />
+        android:layout_below="@+id/textView_subjectcode"
+        android:background="@drawable/routineteacher"
+        android:layout_toRightOf="@+id/time"
+        android:layout_alignBottom="@+id/time"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:text="Teacher:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView16"
-        android:layout_alignBaseline="@+id/textView_teachername"
-        android:layout_alignBottom="@+id/textView_teachername"
-        android:layout_toLeftOf="@+id/textView10"
-        android:layout_toStartOf="@+id/textView10" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:background="#8b8b7a"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/time"
+        android:layout_toEndOf="@+id/time"
+        android:id="@+id/view1"/>
 
-    <TextView
-        android:text="subject  name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_subjectname"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_alignBaseline="@+id/textView15"
-        android:layout_alignBottom="@+id/textView15"
-        android:layout_toRightOf="@+id/textView15"
-        android:layout_toEndOf="@+id/textView15" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        android:background="#8b8b7a"
+        android:layout_above="@+id/textView_teachername"
+        android:layout_toEndOf="@+id/textView_subjectcode"
+        android:id="@+id/view2"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView_subjectcode" />
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+
+        android:background="#8b8b7a"
+        android:layout_below="@+id/textView_subjectcode"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/view1"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
+
+
 </RelativeLayout>

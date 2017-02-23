@@ -5,6 +5,8 @@
     android:id="@+id/activity_routineviewer2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#c6e2ff"
+
 
     tools:context="com.example.user.volleyjson.Routineviewer2">
     <include
@@ -19,39 +21,14 @@
         android:id="@+id/tab1"
         android:background="@color/colorPrimaryDark"
         app:tabMode="scrollable"
+        app:tabTextColor="#fff"
         app:tabIndicatorColor="@color/dot_dark_screen1"
         >
 
 
     </android.support.design.widget.TabLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tab1"
-        android:id="@+id/time"
-        android:text="time"
 
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tab1"
-        android:layout_toRightOf="@+id/time"
-        android:id="@+id/code"
-        android:text="code"
-        android:layout_marginLeft="120dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tab1"
-        android:layout_toRightOf="@id/code"
-        android:id="@+id/name"
-        android:text="name"
-        android:layout_marginLeft="120dp"
-
-        />
 
 
     <android.support.v4.view.ViewPager
@@ -59,9 +36,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/view_pager"
-        android:layout_below="@+id/tab1"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
 
-        >
+
+
+
+        android:layout_below="@+id/tab1">
 
 
     </android.support.v4.view.ViewPager>

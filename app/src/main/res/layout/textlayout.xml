@@ -1,63 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list"
+    android:elevation="30dp"
 
+    >
 
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="100dp"
+    android:layout_marginLeft="10dp"
+    >
     <TextView
-
-        android:layout_height="120dp"
-        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:id="@+id/subjectcode"
         android:layout_alignParentLeft="true"
         android:gravity="center"
-        android:textSize="16dip"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textSize="14dip"
+        android:layout_marginTop="15dp"
+        android:textStyle="normal|bold" />
 
-
-
-        />
     <TextView
-
-        android:layout_height="120dp"
-        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:id="@+id/subjectname"
-        android:layout_toRightOf="@+id/subjectcode"
-        android:gravity="center"
-        android:textSize="16dip"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:layout_below="@+id/subjectcode"
+        android:layout_marginTop="5dp"
+
+        android:textSize="12dip"
 
 
+        android:textStyle="normal|bold" />
 
-        />
     <TextView
-
-        android:layout_height="120dp"
-        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:id="@+id/credit"
-        android:layout_toRightOf="@+id/subjectname"
+        android:layout_below="@+id/subjectname"
         android:gravity="center"
-        android:textSize="16dip"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textSize="12dip"
+        android:layout_marginTop="5dp"
 
+        android:textStyle="normal|bold" />
 
-
-    />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text=" Credit hours"
+        android:layout_toRightOf="@+id/credit"
+        android:layout_below="@+id/subjectname"
+        android:textSize="12dip"
+        android:layout_marginTop="5dp"
+        android:textStyle="normal|bold" />
 
     <Button
-
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:id="@+id/button_syllabus"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="11dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-condensed"
         android:focusable="false"
-        android:text="Download Syllabus"
+        android:text="Syllabus"
         android:background="@drawable/drawable"
-        android:layout_below="@+id/subjectname"
-        android:layout_toRightOf="@+id/subjectcode"
-        android:layout_toEndOf="@+id/subjectcode"
-        android:elevation="6dp" />
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
+
+
 
 
 </RelativeLayout>

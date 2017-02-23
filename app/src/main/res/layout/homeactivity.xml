@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
     <include
         layout="@layout/app_bar"
         android:id="@+id/app_bar"
@@ -13,77 +14,94 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/app_bar"
         android:padding="20dp"
+
         >
         <Button
             android:text="My Profile"
-            android:layout_width="150dp"
-            android:layout_height="120dp"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
             android:background="@drawable/button"
-            android:id="@+id/button_profile" />
+
+            android:id="@+id/button_profile"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         `
 
 
-        <Button
-            android:text="My Notes"
-            android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:background="@drawable/button"
-            android:id="@+id/button_note"
-            android:layout_below="@+id/button_profile"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="12dp" />
+
 
         <Button
             android:text="My Subjects"
-            android:layout_width="150dp"
-            android:layout_height="120dp"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
             android:id="@+id/button_seemysubject"
             android:background="@drawable/button"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/button_profile"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            />
+
+        <Button
+            android:text="My Notes"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:background="@drawable/button"
+            android:id="@+id/button_note"
+            android:layout_below="@+id/button_seemysubject"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp" />
 
         <Button
             android:text="My Routine"
             android:layout_width="150dp"
-            android:layout_height="120dp"
+            android:layout_height="70dp"
             android:id="@+id/see_my_routine"
-            android:background="@drawable/button"
-            android:layout_alignBottom="@+id/button_note"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="Explore All"
-            android:layout_width="330dp"
-            android:layout_height="60dp"
-            android:background="@drawable/newbutton"
-            android:layout_marginTop="16dp"
             android:layout_below="@+id/button_note"
+            android:background="@drawable/button"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/explore"/>
+            android:layout_marginTop="12dp"
+            />
+
 
         <Button
             android:text="my question"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/button_myquestion"
+           android:background="@drawable/button"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/see_my_routine"
+            />
+
+        <Button
+            android:text="Explore All"
+            android:layout_width="30dp"
+            android:layout_height="70dp"
+            android:background="@drawable/newbutton"
+            android:id="@+id/explore"
+            android:layout_below="@+id/button_myquestion"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="73dp"
-            android:id="@+id/button_myquestion" />
-
+            android:layout_marginTop="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
-
-
-
 
 </RelativeLayout>

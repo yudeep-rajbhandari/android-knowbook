@@ -11,9 +11,8 @@
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
         tools:context="com.example.user.volleyjson.MainActivity"
+        android:background="#c6e2ff"
 
         >
 
@@ -23,17 +22,80 @@
             />
 
 
-        <Spinner
-            android:id="@+id/spinner2"
+        <RelativeLayout
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/spinner"
-            android:layout_below="@+id/textView11"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="14dp"
-            android:layout_marginLeft="40dp"
-            android:background="@android:drawable/btn_dropdown"
+            android:layout_weight=".28"
+            android:background="@drawable/spinner"
+            android:orientation="horizontal"
+            android:id="@+id/spinner_layout"
+            android:layout_below="@+id/textView3"
+            >
 
-            />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:spinnerMode="dropdown" />
+
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@mipmap/drop" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/spinner_layout"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight=".28"
+            android:background="@drawable/spinner"
+            android:orientation="horizontal"
+            android:id="@+id/spinner2_layout"
+            android:layout_below="@+id/textView3"
+            >
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:spinnerMode="dropdown" />
+
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@mipmap/drop" />
+
+        </RelativeLayout>
+
+
+
 
 
         <TextView
@@ -50,18 +112,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="100dp" />
 
-        <Spinner
 
-            android:id="@+id/spinner"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="false"
-            android:background="@android:drawable/btn_dropdown"
-            android:elevation="0dp"
-            android:layout_marginTop="14dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignLeft="@+id/textView3"
-            android:layout_alignStart="@+id/textView3" />
 
         <TextView
             android:id="@+id/textView3"
@@ -97,7 +148,7 @@
             android:id="@+id/button_subject"
             android:layout_width="165dp"
             android:layout_height="120dp"
-            android:layout_below="@+id/spinner"
+            android:layout_below="@+id/spinner_layout"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="15dp"
 
@@ -111,7 +162,7 @@
             android:layout_width="170dp"
             android:layout_height="120dp"
             android:background="@drawable/routine_final1"
-            android:layout_below="@+id/spinner2"
+            android:layout_below="@+id/spinner2_layout"
             android:layout_toRightOf="@id/button_subject"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="10dp"

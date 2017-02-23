@@ -4,7 +4,7 @@
     android:id="@+id/activity_notes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#c6e2ff"
     tools:context="com.example.user.volleyjson.notes">
 
     <include
@@ -12,25 +12,60 @@
         layout="@layout/app_bar"
         />
 
+
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/spinner_notes"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-
+        android:layout_below="@+id/spinner_layout"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/listview_notes" />
 
-    <Spinner
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:id="@+id/spinner_notes"
-        android:layout_below="@+id/app_bar"
-        android:layout_alignParentLeft="true"
-        android:background="@android:drawable/btn_dropdown"
 
-        android:layout_marginTop="20dp"
+        android:id="@+id/listview_notes"
+
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:listSelector="@android:color/transparent"
         />
+
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner"
+        android:orientation="horizontal"
+        android:id="@+id/spinner_layout"
+        android:layout_below="@+id/app_bar"
+        >
+
+        <Spinner
+            android:id="@+id/spinner_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@mipmap/drop" />
+
+    </RelativeLayout>
+
+
+
 </RelativeLayout>
