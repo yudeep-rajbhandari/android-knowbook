@@ -110,8 +110,9 @@ public class Wednesday extends android.support.v4.app.Fragment {
                                     String date1 = null;
                                     String date3 = null;
 
-                                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-                                    df.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+                                    df.setTimeZone(TimeZone.getTimeZone("GMT-0:15"));
+
                                     try {
                                         Date date = (Date) df.parseObject(startingtime);
                                         Date date2 = (Date) df.parseObject(endingtime);
@@ -120,8 +121,8 @@ public class Wednesday extends android.support.v4.app.Fragment {
 //                                    String formattedDate = df.format(date);
 //                                   System.out.println(formattedDate);
 
-                                        date1 = new SimpleDateFormat("HH:mm aa").format(date);
-                                        date3 = new SimpleDateFormat("HH:mm aa").format(date2);
+                                        date1 = new SimpleDateFormat("hh:mm aa").format(date);
+                                        date3 = new SimpleDateFormat("hh:mm aa").format(date2);
                                         System.out.println(date1);
                                         System.out.println(date3);
 
