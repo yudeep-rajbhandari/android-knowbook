@@ -35,7 +35,7 @@ EditText name;
     Spinner Spinner_profile_semester;
     Button Signup,view;
     DatabaseHelper mydb;
-    TextView view1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ EditText name;
         Signup=(Button)findViewById(R.id.button_profile);
         mydb=new DatabaseHelper(this);
         view=(Button)findViewById(R.id.view);
-        view1=(TextView)findViewById(R.id.textView14);
+
 
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);

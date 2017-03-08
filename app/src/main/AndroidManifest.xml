@@ -7,7 +7,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/bookopenflat"
-        android:label="KnowBooks"
+        android:label="KnowBook"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
@@ -44,8 +44,9 @@
             android:label="My subjects" />
         <activity android:name=".see_my_books"
             android:label="My Booklist"/>
-        <activity android:name=".homeactivity"
-            android:label="Home"
+        <activity
+            android:name=".homeactivity"
+            android:label="Know Books"
             />
         <activity android:name=".question"
             android:label="Past Questions"

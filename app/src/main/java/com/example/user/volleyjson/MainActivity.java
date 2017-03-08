@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -62,22 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
+        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        mDrawerLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"selected",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-
 
         // mArrayList = new ArrayList<String>();
 //        adapter = new ArrayAdapter<String>(this,
@@ -161,15 +149,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(mToggle.onOptionsItemSelected(item)){
-            return  true;
+        if (item.getItemId()==android.R.id.home){
+            onBackPressed();
+
         }
         return super.onOptionsItemSelected(item);
-
-
     }
+
+
+
+
 
 
     /*   button.setOnClickListener(new View.OnClickListener() {

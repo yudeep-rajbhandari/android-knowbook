@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ public class homeactivity  extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.homeactivity);
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
 
 
         profile = (Button) findViewById(R.id.button_profile);

@@ -11,7 +11,17 @@
     layout="@layout/app_bar"
         android:id="@+id/app_bar"
     />
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select subject"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/text"
+        android:textSize="15dp"
+        android:layout_below="@+id/app_bar"
+        android:id="@+id/subject"
+        />
     <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -21,7 +31,7 @@
         android:background="@drawable/spinner"
         android:orientation="horizontal"
         android:id="@+id/spinner_layout"
-        android:layout_below="@+id/app_bar"
+        android:layout_below="@+id/subject"
         >
 
         <Spinner
